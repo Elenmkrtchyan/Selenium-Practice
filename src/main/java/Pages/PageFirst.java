@@ -90,7 +90,7 @@ WebDriver driver;
 }
 
  public void clickCheckoutButton (){
-  checkoutButton.click();
+  checkoutButton.click()  ;
     }
 
 
