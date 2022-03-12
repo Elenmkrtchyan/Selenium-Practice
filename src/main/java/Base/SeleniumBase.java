@@ -23,11 +23,11 @@ public class SeleniumBase {
             driver.get(baseUrl);
         }
 
-        @AfterClass
-       public void tearDown() {
-
-           driver.quit();
-       }
+//        @AfterClass
+//       public void tearDown() {
+//
+//           driver.quit();
+//       }
     }
 
 

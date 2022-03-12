@@ -2,6 +2,7 @@ package Tests;
 
 import Base.SeleniumBase;
 import Pages.PageFirst;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class Test1 extends SeleniumBase {
@@ -17,7 +18,7 @@ public class Test1 extends SeleniumBase {
       pageFirst.dressAvailable();
       pageFirst.mouseHover();
       pageFirst.clickCheckoutButton();
-      pageFirst.checkDiscount();
+      pageFirst.checkDiscount(" -20% ");
 
   }
 

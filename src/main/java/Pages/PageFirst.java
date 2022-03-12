@@ -1,12 +1,14 @@
 package Pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -33,14 +35,16 @@ WebDriver driver;
     @FindBy (className = "product-name")
     List<WebElement> productNameList;
 
-    @FindBy (css = "a.button[data-id-product='7']")
-    WebElement addToCard;
 
-    @FindBy (css = "[title='Proceed to checkout']")
-    WebElement checkoutButton;
+      @FindBy (css = ".button[data-id-product='7']")
+      WebElement addToCard;
 
-    @FindBy (className = " price-percent-reduction small")
-    WebElement discount;
+      @FindBy (css = "[title='Proceed to checkout']")
+      WebElement checkoutButton;
+
+
+      @FindBy (css = "#product_price_7_34_0 > span.price-percent-reduction.small")
+      WebElement discount;
 
 
 
@@ -79,20 +83,20 @@ WebDriver driver;
         }
     }
    public void mouseHover(){
-
-   Actions actions = new Actions(driver);
-   actions.moveToElement(addToCard).perform();
-   actions.contextClick(addToCard);
+    Actions actions = new Actions(driver);
+    actions.moveToElement(driver.findElement(By.xpath("//*[@id='center_column']/ul/li[5]/div/div[1]/div/a[1]/img"))).perform();
+    actions.moveToElement(addToCard).perform();
+    addToCard.click();
 }
 
  public void clickCheckoutButton (){
-        checkoutButton.click();
+  checkoutButton.click();
+    }
 
- }
-  public void checkDiscount (){
-        assertTrue("It has no discount", discount.getText().equals("-20%"));
 
-  }
-
+    public void checkDiscount (String expectedTitle) {
+        String actualTitle = discount.getText();
+        Assert.assertEquals(actualTitle, expectedTitle, "There is no discount");
+    }
 
 }
